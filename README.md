@@ -17,6 +17,19 @@ API REST para gerenciamento de playlists de músicas, construída com Django e D
 - Django 5.2+
 - Django REST Framework
 
+### Banco de Dados
+
+- **PostgreSQL 14+**
+- Configuração mínima:
+  ```ini
+  DB_ENGINE=django.db.backends.postgresql
+  DB_NAME=nome_do_banco
+  DB_USER=usuario
+  DB_PASSWORD=senha
+  DB_HOST=localhost
+  DB_PORT=5432
+  ```
+
 ## Como rodar o projeto localmente
 
 1. Clone o repositório:
@@ -30,8 +43,8 @@ cd music-streaming
 
 ```
 python -m venv venv
-source venv/bin/activate  # Linux/macOS
-venv\Scripts\activate     # Windows
+source venv/bin/activate
+venv\Scripts\activate
 ```
 
 3. Instale as dependências:
@@ -56,12 +69,6 @@ python manage.py runserver
 
 ```
 python manage.py test
-```
-
-7. Documentação:
-
-```
-http://localhost:8000/api/docs/ — UI Swagger
 ```
 
 ## Dependências
@@ -97,3 +104,252 @@ Para rodar o projeto, você precisará instalar as seguintes dependências Pytho
 - tzdata==2025.2
 - uritemplate==4.1.1
 - urllib3==2.4.0
+
+### Autenticação
+
+- **Tipo**: JWT (Bearer Token)
+- **Header**:
+  ```http
+  Authorization: Bearer <seu_token>
+  ```
+
+### Endpoints
+
+## Playlists
+
+Listar todas as playlists
+
+`GET /musica/playlists/`
+
+200 OK:
+
+```json
+[
+  {
+    "id": 1,
+    "nome": "Minhas Favoritas",
+    "musicas": [1, 2]
+  }
+]
+```
+
+Criar playlist
+
+`POST /musica/playlists/`
+
+#### Request Body
+
+```json
+{
+  "nome": "Minha playlist"
+}
+```
+
+201 Created: Sucesso
+
+400 Bad Request: Dados inválidos
+
+## Detalhes da playlist
+
+`GET /musica/playlists/{id}/`
+
+200 OK
+
+```json
+{
+  "id": 2,
+  "nome": "Minha Playlist 2",
+  "usuario": 1,
+  "musicas": [
+    {
+      "id": 1,
+      "nome": "Nome da música",
+      "duracao": 180,
+      "id_externo": "abc123"
+    }
+  ]
+}
+```
+
+`PATCH /musica/playlists/{id}/`
+
+#### Request Body
+
+```json
+{
+  "nome": "Minha playlist Atualizada"
+}
+```
+
+200 :
+
+```json
+{
+  "id": 2,
+  "nome": "Minha playlist Atualizada",
+  "usuario": 1,
+  "musicas": [
+    {
+      "id": 1,
+      "nome": "Nome da música",
+      "duracao": 180,
+      "id_externo": "abc123"
+    }
+  ]
+}
+```
+
+400 Bad Request: Dados inválidos
+
+404 Not Found: ID inválido
+
+`DELETE /musica/playlists/{id}/`
+
+204 No Content: Excluído com sucesso
+
+404 Not Found: ID inválido
+
+## Músicas
+
+Adicionar música
+
+`POST /musica/playlists/{playlist_id}/musicas/`
+
+```json
+{
+  "id_externo": "spotify:track:5Z7ygHQo02SUrFmcgpwsKW",
+  "nome": "Bohemian Rhapsody",
+  "duracao": 354
+}
+```
+
+200 OK:
+
+```json
+{ "message": "Música adicionada com sucesso" }
+```
+
+404 Not Found: ID inválido
+
+Remover música
+
+`DELETE /musica/playlists/{playlist_id}/musicas/{musica_id}/`
+
+200 OK:
+
+```json
+{ "message": "Música removida com sucesso" }
+```
+
+404 Not Found: ID inválido
+
+## Usuários
+
+Criar um usuário
+
+`POST /usuario/registrar/`
+
+#### Request Body
+
+```json
+{
+  "nome": "Minha playlist"
+}
+```
+
+201 Created: Sucesso
+
+400 Bad Request: Dados inválidos
+
+Listar todos os usuários
+
+`GET /usuario/usuarios/`
+
+200 OK:
+
+```json
+[
+  {
+    "id": 8,
+    "email": "testando2@example.com"
+  },
+  {
+    "id": 3,
+    "email": "testando4@example.com"
+  }
+]
+```
+
+Atualizar usuário
+
+`PATCH/usuario/usuarios/{id}/atualizar`
+
+#### Request Body
+
+```json
+{
+  "email": "testando4@example.com",
+  "senha": "novasenha123"
+}
+```
+
+```json
+{
+  "message": "Usuário atualizado com sucesso"
+}
+```
+
+400 Bad Request: Dados inválidos
+
+404 Not Found: ID inválido
+
+Excluir usuário
+
+`DELETE/usuario/usuarios/{id}/deletar/`
+
+200 OK:
+
+```json
+{
+  "message": "Usuário deletado com sucesso"
+}
+```
+
+404 Not Found: ID inválido
+
+Login
+
+`POST/usuario/login/`
+
+#### Request Body
+
+```json
+{
+  "email": "testando4@example.com",
+  "senha": "novasenha123"
+}
+```
+
+200 OK:
+
+```json
+{
+  "usuario": {
+    "id": 1,
+    "email": "testando4@example.com"
+  },
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0NzUxNzQwMCwiaWF0IjoxNzQ3NDMxMDAwLCJqdGkiOiI3NWU1YWIyNTUxNTA0M2Q5YjU4NzU5ZWMzNzUzMmFlOCIsInVzZXJfaWQiOjF9.ZgoAzvuOlwNJpRbMgAFTSGiUoRd-xx0sfMzoV2vcJJI",
+  "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3NDMxMzAwLCJpYXQiOjE3NDc0MzEwMDAsImp0aSI6IjY2MDNiMTE1YWVlZTQwYjc4YmE3MDlhNjU4NjkyMjE0IiwidXNlcl9pZCI6MX0.wkXXvlADddx_OJ2Snir4KxL7DVOiTqrs5DQJYlPAxb0"
+}
+```
+
+400 Bad Request: Dados inválidos
+
+Logout
+`/usuario/logout/`
+
+```json
+{
+  "message": "Logout realizado com sucesso"
+}
+```
