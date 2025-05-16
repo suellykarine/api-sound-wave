@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     "usuario",
     "rest_framework",
     "rest_framework_simplejwt",
-    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -148,13 +147,3 @@ REST_FRAMEWORK = {
 
 if "test" in sys.argv:
     DATABASES["default"] = DATABASES["test"]
-
-REST_FRAMEWORK = {
-    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
-}
-
-SPECTACULAR_SETTINGS = {
-    "TITLE": "API Plataforma de Streaming de músicas",
-    "DESCRIPTION": "API para gerenciar playlists e músicas",
-    "VERSION": "1.0.0",
-}
