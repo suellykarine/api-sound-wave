@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import sys
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -84,7 +85,15 @@ DATABASES = {
         "PASSWORD": "Sk151181",
         "HOST": "localhost",
         "PORT": "5432",
-    }
+    },
+    "test": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "banco_teste",
+        "USER": "postgres",
+        "PASSWORD": "Sk151181",
+        "HOST": "localhost",
+        "PORT": "5432",
+    },
 }
 
 
@@ -135,3 +144,6 @@ REST_FRAMEWORK = {
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     )
 }
+
+if "test" in sys.argv:
+    DATABASES["default"] = DATABASES["test"]
