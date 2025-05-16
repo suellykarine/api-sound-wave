@@ -15,12 +15,12 @@ urlpatterns = [
     path("login/", LoginUsuarioView.as_view(), name="login_usuario"),
     path("logout/", logout_usuario, name="logout_usuario"),
     path(
-        "usuarios/<int:usuario_id>/",
+        "usuarios/<int:usuario_id>/atualizar",
         AtualizarUsuarioView.as_view(),
         name="usuario-update",
     ),
     path(
-        "usuarios/<int:usuario_id>/",
+        "usuarios/<int:usuario_id>/deletar/",
         DeletarUsuarioView.as_view(),
         name="usuario-delete",
     ),
