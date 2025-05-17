@@ -35,7 +35,7 @@ API REST para gerenciamento de playlists de músicas, construída com Django e D
 1. Clone o repositório:
 
 ```bash
-git clone (https://github.com/suellykarine/streaming-music)
+git clone (https://github.com/suellykarine/api-sound-wave)
 cd music-streaming
 ```
 
