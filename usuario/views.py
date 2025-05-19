@@ -50,7 +50,7 @@ class LoginUsuarioView(APIView):
         email = request.data.get("email")
         senha = request.data.get("senha")
 
-        user = authenticate(request, username=email, password=senha)
+        user = authenticate(request, email=email, password=senha)
         if user is None:
             return Response(
                 {"error": "Credenciais inválidas"},

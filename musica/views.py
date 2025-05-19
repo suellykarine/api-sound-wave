@@ -70,7 +70,7 @@ class RemoverMusicaPlaylistView(APIView):
             )
 
         try:
-            musica = Musica.objects.get(id=musica_id)
+            musica = Musica.objects.get(id_externo=musica_id)
         except Musica.DoesNotExist:
             return Response(
                 {"error": "Música não encontrada"}, status=status.HTTP_404_NOT_FOUND
