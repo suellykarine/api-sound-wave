@@ -43,8 +43,7 @@ cd music-streaming
 
 ```
 python -m venv venv
-source venv/bin/activate
-venv\Scripts\activate
+source venv/Scripts/activate
 ```
 
 3. Instale as dependências:
@@ -105,13 +104,20 @@ Para rodar o projeto, você precisará instalar as seguintes dependências Pytho
 - uritemplate==4.1.1
 - urllib3==2.4.0
 
+### Fron-End
+
+```
+Clone o repositório: https://github.com/suellykarine/music-sound-front
+```
+
 ### Autenticação
 
 - **Tipo**: JWT (Bearer Token)
 - **Header**:
-  ```http
+
+```http
   Authorization: Bearer <seu_token>
-  ```
+```
 
 ### Endpoints
 
