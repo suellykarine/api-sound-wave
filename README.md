@@ -1,23 +1,21 @@
-# Plataforma de Musicas Streaming - Backend
-
-## Descrição
+# 🎵 Plataforma de Musicas Streaming - Backend
 
 API REST para gerenciamento de playlists de músicas, construída com Django e Django REST Framework.
 
-## Funcionalidades
+## 📋 Funcionalidades
 
 - CRUD de playlists
 - Adição e remoção de músicas nas playlists
 - Autenticação de usuários
 - Testes automatizados para garantir qualidade do código
 
-## Requisitos
+## 🛠️ Requisitos
 
 - Python 3.10+
 - Django 5.2+
 - Django REST Framework
 
-### Banco de Dados
+### 🗃️ Banco de Dados
 
 - **PostgreSQL 14+**
 - Configuração mínima:
@@ -30,7 +28,7 @@ API REST para gerenciamento de playlists de músicas, construída com Django e D
   DB_PORT=5432
   ```
 
-## Como rodar o projeto localmente
+## Como rodar o projeto
 
 1. Clone o repositório:
 
@@ -70,7 +68,7 @@ python manage.py runserver
 python manage.py test
 ```
 
-## Dependências
+## 📦 Dependências
 
 Para rodar o projeto, você precisará instalar as seguintes dependências Python:
 
@@ -104,13 +102,13 @@ Para rodar o projeto, você precisará instalar as seguintes dependências Pytho
 - uritemplate==4.1.1
 - urllib3==2.4.0
 
-### Fron-End
+### 🌐 Front-End
 
 ```
 Clone o repositório: https://github.com/suellykarine/music-sound-front
 ```
 
-### Autenticação
+### 🔒 Autenticação
 
 - **Tipo**: JWT (Bearer Token)
 - **Header**:
@@ -119,7 +117,7 @@ Clone o repositório: https://github.com/suellykarine/music-sound-front
   Authorization: Bearer <seu_token>
 ```
 
-### Endpoints
+###  📌 Endpoints
 
 ## Playlists
 
@@ -359,3 +357,5 @@ Logout
   "message": "Logout realizado com sucesso"
 }
 ```
+
+🔍 Testes
