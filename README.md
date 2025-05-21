@@ -220,7 +220,7 @@ Clone o repositório: https://github.com/suellykarine/music-sound-front
 
 ## 🎶 Músicas
 
-➕ Adicionar música a uma olaylist
+➕ Adicionar música a uma playlist
 
 `POST /musica/playlists/{playlist_id}/musicas/`
 
