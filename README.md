@@ -155,6 +155,8 @@ Clone o repositório: https://github.com/suellykarine/music-sound-front
 
 ## 🔍 Detalhes da playlist
 
+📜 Lista os detalhes de uma playlist
+
 `GET /musica/playlists/{id}/`
 
 200 OK
@@ -218,7 +220,7 @@ Clone o repositório: https://github.com/suellykarine/music-sound-front
 
 ## 🎶 Músicas
 
-➕ Adicionar música
+➕ Adicionar música a uma olaylist
 
 `POST /musica/playlists/{playlist_id}/musicas/`
 
@@ -238,7 +240,7 @@ Clone o repositório: https://github.com/suellykarine/music-sound-front
 
 404 Not Found: ID inválido
 
-➖ Remover música
+➖ Remover música da playlist
 
 `DELETE /musica/playlists/{playlist_id}/musicas/{musica_id}/`
 
@@ -252,7 +254,7 @@ Clone o repositório: https://github.com/suellykarine/music-sound-front
 
 ## 👥  Usuários
 
-🆕 Criar um usuário
+🆕 Cria um usuário
 
 `POST /usuario/registrar/`
 
@@ -287,7 +289,7 @@ Clone o repositório: https://github.com/suellykarine/music-sound-front
 ]
 ```
 
-✏️ Atualizar usuário
+✏️ Atualizar um usuário
 
 `PATCH/usuario/usuarios/{id}/atualizar`
 
@@ -310,7 +312,7 @@ Clone o repositório: https://github.com/suellykarine/music-sound-front
 
 404 Not Found: ID inválido
 
-🗑️ Excluir usuário
+🗑️ Excluir um usuário
 
 `DELETE/usuario/usuarios/{id}/deletar/`
 
@@ -361,4 +363,8 @@ Clone o repositório: https://github.com/suellykarine/music-sound-front
 }
 ```
 
-🔍 Testes
+🔍 Teste
+
+```
+python manage.py test
+```
