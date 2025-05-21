@@ -18,7 +18,7 @@ API REST para gerenciamento de playlists de músicas, construída com Django e D
 ### 🗃️ Banco de Dados
 
 - **PostgreSQL 14+**
-- Configuração mínima:
+- Configuração:
   ```ini
   DB_ENGINE=django.db.backends.postgresql
   DB_NAME=nome_do_banco
@@ -28,7 +28,7 @@ API REST para gerenciamento de playlists de músicas, construída com Django e D
   DB_PORT=5432
   ```
 
-## Como rodar o projeto
+## 📦 Instalação
 
 1. Clone o repositório:
 
@@ -119,9 +119,9 @@ Clone o repositório: https://github.com/suellykarine/music-sound-front
 
 ###  📌 Endpoints
 
-## Playlists
+## 🎵 Playlists
 
-Listar todas as playlists
+📜 Listar todas as playlists
 
 `GET /musica/playlists/`
 
@@ -137,7 +137,7 @@ Listar todas as playlists
 ]
 ```
 
-Criar playlist
+➕ Criar playlist
 
 `POST /musica/playlists/`
 
@@ -153,7 +153,7 @@ Criar playlist
 
 400 Bad Request: Dados inválidos
 
-## Detalhes da playlist
+## 🔍 Detalhes da playlist
 
 `GET /musica/playlists/{id}/`
 
@@ -174,6 +174,7 @@ Criar playlist
   ]
 }
 ```
+✏️ Atualizar nome da playlist
 
 `PATCH /musica/playlists/{id}/`
 
@@ -207,15 +208,17 @@ Criar playlist
 
 404 Not Found: ID inválido
 
+🗑️ Excluir uma playlist
+
 `DELETE /musica/playlists/{id}/`
 
 204 No Content: Excluído com sucesso
 
 404 Not Found: ID inválido
 
-## Músicas
+## 🎶 Músicas
 
-Adicionar música
+➕ Adicionar música
 
 `POST /musica/playlists/{playlist_id}/musicas/`
 
@@ -235,7 +238,7 @@ Adicionar música
 
 404 Not Found: ID inválido
 
-Remover música
+➖ Remover música
 
 `DELETE /musica/playlists/{playlist_id}/musicas/{musica_id}/`
 
@@ -247,9 +250,9 @@ Remover música
 
 404 Not Found: ID inválido
 
-## Usuários
+## 👥  Usuários
 
-Criar um usuário
+🆕 Criar um usuário
 
 `POST /usuario/registrar/`
 
@@ -265,7 +268,7 @@ Criar um usuário
 
 400 Bad Request: Dados inválidos
 
-Listar todos os usuários
+📋 Listar todos os usuários
 
 `GET /usuario/usuarios/`
 
@@ -284,7 +287,7 @@ Listar todos os usuários
 ]
 ```
 
-Atualizar usuário
+✏️ Atualizar usuário
 
 `PATCH/usuario/usuarios/{id}/atualizar`
 
@@ -307,7 +310,7 @@ Atualizar usuário
 
 404 Not Found: ID inválido
 
-Excluir usuário
+🗑️ Excluir usuário
 
 `DELETE/usuario/usuarios/{id}/deletar/`
 
@@ -321,7 +324,7 @@ Excluir usuário
 
 404 Not Found: ID inválido
 
-Login
+🔐 Login
 
 `POST/usuario/login/`
 
@@ -349,7 +352,7 @@ Login
 
 400 Bad Request: Dados inválidos
 
-Logout
+🚪 Logout
 `/usuario/logout/`
 
 ```json
